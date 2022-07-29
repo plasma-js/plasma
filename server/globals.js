@@ -36,6 +36,7 @@ let appGlobals = {
 
 global.env = env;
 global.App = appGlobals;
+global.Africa = Africa;
 global.DB = switch(env('DB_CLIENT')) {
   case 'MySQL':
     return new MySQL(...dbConfig);
