@@ -22,4 +22,4 @@ mix
   .njk('./resources/html', nunjucksOptions)
   .js('./resources/assets/js/index.js', 'assets/js/bundle.js')
   .sass('./resources/assets/scss/main.scss', 'assets/css')
-  .setPublicPath('dist');
+  .setPublicPath('public');
