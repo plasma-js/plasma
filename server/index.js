@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // Dependencies and Modules
 const Core = require('./core/index');
 const Hapi = require('hapi');
