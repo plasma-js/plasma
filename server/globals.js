@@ -1,26 +1,23 @@
-const knex = require('knex');
+const Africa = require('africa.js');
 const env = require('./core/helpers/env');
 
+const { MySQL, MariaDB, PostgreSQL, SQLite, SQLServer } = require('africa.js');
+
 /**
- * Knex query builder config
+ * Database config
  * @type {Object}
  */
-let knexConfig = {
-  client: env('DB_CLIENT'),
-  connection: {
-    host: env('DB_HOST'),
-    user: env('DB_USER'),
-    password: env('DB_PASS'),
-    database: env('DB_NAME')
-  },
-  migrations: {
-    directory: './server/migrations/'
-  },
-  seeds: {
-    directory: './server/seeds/'
-  }
-}
+let dbConfig = {
+  host: env('DB_HOST'),
+  user: env('DB_USER'),
+  password: env('DB_PASS'),
+  database: env('DB_NAME')
+};
 
+/**
+ * App globals
+ * @type {Object}
+ */
 let appGlobals = {
   server: {
     host: env('SERVER_HOST'),
@@ -39,4 +36,24 @@ let appGlobals = {
 
 global.env = env;
 global.App = appGlobals;
-global.DB = knex(knexConfig);
+global.DB = switch(env('DB_CLIENT')) {
+  case 'MySQL':
+    return new MySQL(...dbConfig);
+    break;
+
+  case 'MariaDB':
+    return new MariaDB(...dbConfig);
+    break;
+
+  case 'PostgreSQL':
+    return new PostgreSQL(...dbConfig);
+    break;
+
+  case 'SQLite':
+    return new SQLite(dbConfig.database);
+    break;
+
+  case 'SQLServer':
+    return new SQLServer(...dbConfig);
+    break;
+};
