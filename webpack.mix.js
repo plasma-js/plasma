@@ -19,7 +19,7 @@ const nunjucksOptions = {
 };
 
 mix
-  .njk('./resources/html', nunjucksOptions)
+  .njk('./resources/html/pages', nunjucksOptions)
   .js('./resources/assets/js/index.js', 'assets/js/bundle.js')
   .sass('./resources/assets/scss/main.scss', 'assets/css')
   .setPublicPath('public');

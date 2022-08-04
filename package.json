@@ -1,5 +1,5 @@
 {
-  "name": "plasma-js/plasma",
+  "name": "@plasma-js/plasma",
   "version": "1.0.0",
   "description": "A development enviroment for Node.js with Africa ORM, Hapi.js and Laravel Mix as web bundler.",
   "main": "index.js",
