@@ -1,8 +1,8 @@
-require('babel-polyfill');
+require('dotenv').config();
+const env = require('./server/core/helpers/env');
 
-const webpack = require('webpack');
 const mix = require('laravel-mix');
-require('laravel-mix-nunjucks-2');
+require('laravel-mix-njk');
 
 const isDev = (process.env.NODE_ENV === 'development') ? true : false;
 const basePath = process.cwd();
@@ -22,4 +22,8 @@ mix
   .njk('./resources/html/pages', nunjucksOptions)
   .js('./resources/assets/js/index.js', 'assets/js/bundle.js')
   .sass('./resources/assets/scss/main.scss', 'assets/css')
+  .options({
+    processCssUrls: false
+  })
+  .browserSync(`${env('SERVER_HOST')}:${env('SERVER_PORT')}`)
   .setPublicPath('public');

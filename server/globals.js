@@ -31,30 +31,48 @@ let appGlobals = {
   https: {
     enable: false,
     options: {}
-  }
+  },
+  dbConfig
 }
 
-global.env = env;
-global.App = appGlobals;
-global.Africa = Africa;
-global.DB = switch(env('DB_CLIENT')) {
+/**
+ * DB global
+ * @type {Class Instance}
+ */
+let DB = undefined;
+
+switch(env('DB_CLIENT')) {
   case 'MySQL':
+  case 'mysql':
     return new MySQL(...dbConfig);
     break;
 
   case 'MariaDB':
+  case 'mariadb':
     return new MariaDB(...dbConfig);
     break;
 
   case 'PostgreSQL':
+  case 'postgresql':
     return new PostgreSQL(...dbConfig);
     break;
 
   case 'SQLite':
+  case 'sqlite':
     return new SQLite(dbConfig.database);
     break;
 
   case 'SQLServer':
+  case 'sqlserver':
     return new SQLServer(...dbConfig);
     break;
+
+  default:
+    return new MySQL(...dbConfig);
+    break;
 };
+
+global.env = env;
+global.App = appGlobals;
+global.Africa = Africa;
+global.DB = DB;

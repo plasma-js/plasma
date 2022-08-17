@@ -1,33 +1,33 @@
 require('dotenv').config();
+require('./globals');
 
-// Dependencies and Modules
-const Core = require('./core/index');
 const Hapi = require('hapi');
+const Core = require('./core/index');
 
-module.exports = {
-  init(cb, config) {
-    // Creates a instance of Server
-    const Server = new Hapi.Server();
-    
-    // Config our server
-    Server.connection(App.server);
+/* *******************************
+  Creates a instance of the Server
+******************************** */
+const Server = new Hapi.server({ options: App.server });
 
-    // Set our Server Event Listeners
-    serverListeners(Server);
+/* *******************************
+  Loads the Core
+******************************** */
+Core.load(Server);
 
-    // Start the server
-    Server.start();
-  }
-}
+/* *******************************
+  Server events listeners
+******************************** */
+Server.on('start', function(err) {
+  Core.load(Server); // Load server resources
 
-function serverListeners(Server) {
-  Server.on('start', function(err) {
-    Core.load(Server); // Load server resources
+  console.log('Server running at PORT', Server.info.port);
+});
 
-    console.log('Server running at PORT', Server.info.port);
-  });
+Server.on('stop', function(err) {
+  console.warn('Server stoped. ', err);
+});
 
-  Server.on('stop', function(err) {
-    console.warn('Server stoped. ', err);
-  });
-}
+/* *******************************
+  Start the Server
+******************************** */
+Server.start();
