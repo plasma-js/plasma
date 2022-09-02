@@ -27,13 +27,6 @@
     "eslint-config-airbnb-base": "^12.0.2",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.7.0",
-    "file-loader": "^1.1.5",
-    "glob": "^7.1.2",
-    "hapi": "^18.1.0",
-    "inert": "^5.1.3",
-    "laravel-mix": "^5.0.4",
-    "laravel-mix-njk": "^1.0.0",
-    "nodemon": "^2.0.19",
     "npm-run-all": "^4.1.5",
     "nunjucks-html-loader": "^1.1.0",
     "resolve-url-loader": "^3.1.0",
@@ -45,7 +38,13 @@
     "webpack-dev-server": "^4.10.0"
   },
   "dependencies": {
-    "africa.js": "^1.7.3",
-    "dotenv": "^10.0.0"
+    "africa.js": "^1.7.9-ALPHA-3",
+    "dotenv": "^10.0.0",
+    "glob": "^7.1.2",
+    "hapi": "^18.1.0",
+    "inert": "^5.1.3",
+    "laravel-mix": "^5.0.4",
+    "laravel-mix-njk": "^1.0.0",
+    "nodemon": "^2.0.19"
   }
 }
