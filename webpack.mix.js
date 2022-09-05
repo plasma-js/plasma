@@ -25,5 +25,5 @@ mix
   .options({
     processCssUrls: false
   })
-  .browserSync(`${env('SERVER_HOST')}:${env('SERVER_PORT')}`)
+  .browserSync(`http://${env('SERVER_HOST')}:${env('SERVER_PORT')}/`)
   .setPublicPath('public');

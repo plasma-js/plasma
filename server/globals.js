@@ -1,7 +1,8 @@
-const Africa = require('africa.js');
-const env = require('./core/helpers/env');
+'use strict'
 
+const Africa = require('africa.js');
 const { MySQL, MariaDB, PostgreSQL, SQLite, SQLServer } = require('africa.js');
+const env = require('./core/helpers/env');
 
 /**
  * Database config
@@ -32,8 +33,8 @@ let appGlobals = {
     enable: false,
     options: {}
   },
-  dbConfig
-}
+  db: dbConfig
+};
 
 /**
  * DB global
@@ -44,17 +45,17 @@ let DB = undefined;
 switch(env('DB_CLIENT')) {
   case 'MySQL':
   case 'mysql':
-    return new MySQL(...dbConfig);
+    return new MySQL(dbConfig.host, dbConfig.user, dbConfig.password, dbConfig.database);
     break;
 
   case 'MariaDB':
   case 'mariadb':
-    return new MariaDB(...dbConfig);
+    return new MariaDB(dbConfig.host, dbConfig.user, dbConfig.password, dbConfig.database);
     break;
 
   case 'PostgreSQL':
   case 'postgresql':
-    return new PostgreSQL(...dbConfig);
+    return new PostgreSQL(dbConfig.host, dbConfig.user, dbConfig.password, dbConfig.database);
     break;
 
   case 'SQLite':
@@ -64,11 +65,11 @@ switch(env('DB_CLIENT')) {
 
   case 'SQLServer':
   case 'sqlserver':
-    return new SQLServer(...dbConfig);
+    return new SQLServer(dbConfig.host, dbConfig.user, dbConfig.password, dbConfig.database);
     break;
 
   default:
-    return new MySQL(...dbConfig);
+    return new MySQL(dbConfig.host, dbConfig.user, dbConfig.password, dbConfig.database);
     break;
 };
 

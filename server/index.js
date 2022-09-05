@@ -7,7 +7,7 @@ const Core = require('./core/index');
 /* *******************************
   Creates a instance of the Server
 ******************************** */
-const Server = new Hapi.server({ options: App.server });
+const Server = new Hapi.server(App.server);
 
 /* *******************************
   Loads the Core
