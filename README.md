@@ -1,5 +1,5 @@
 # plasma
-A web framework ready for Node enviroment with Africa ORM, Hapi.js and Laravel Mix for web bundle.
+A web enviroment for Node with África.js, Hapi.js and Laravel Mix for web bundle.
 
 ## Quickstart
 
@@ -11,7 +11,7 @@ For install the dependencies and run the project, open your bash/terminal in the
 
 ## Setup
 
-For setup, you can edit the `.env.example` file and save as `.env` only.
+For run the setup, you can edit the `.env.example` file and save as `.env` only.
 Then, run on your bash:
 
 ```bash
@@ -64,4 +64,4 @@ Now, you will be able to use the data in the project:
 
 For more details about templating, visit the site of nunjucks clicking [here](https://mozilla.github.io/nunjucks/templating.html).
 
-Project made with <3 under the MIT License.
+Project made with <3 under the Apache License.
