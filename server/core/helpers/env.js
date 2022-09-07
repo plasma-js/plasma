@@ -1,7 +1,9 @@
 module.exports = (v) => {
   let envVar = process.env[v];
 
-  if (envVar) envVar;
-
-  return undefined;
+  if (envVar) {
+    return envVar;
+  } else {
+    return undefined;
+  }
 }

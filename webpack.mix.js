@@ -19,11 +19,12 @@ const nunjucksOptions = {
 };
 
 mix
-  .njk('./resources/html/pages', nunjucksOptions)
+  .njk('./resources/html/', nunjucksOptions)
   .js('./resources/assets/js/index.js', 'assets/js/bundle.js')
   .sass('./resources/assets/scss/main.scss', 'assets/css')
   .options({
     processCssUrls: false
   })
+  .copyDirectory('./resources/assets/images', 'public/assets/images')
   .browserSync(`http://${env('SERVER_HOST')}:${env('SERVER_PORT')}/`)
   .setPublicPath('public');
