@@ -27,4 +27,18 @@ mix
   })
   .copyDirectory('./resources/assets/images', 'public/assets/images')
   .browserSync(`http://${env('SERVER_HOST')}:${env('SERVER_PORT')}/`)
+  .webpackConfig(webpack => {
+    return {
+      resolve: {
+        fallback: {
+          "crypto": require.resolve('crypto-browserify'),
+          "http": require.resolve('stream-http'),
+          "https": require.resolve('https-browserify'),
+          "path": require.resolve('path-browserify'),
+          "stream": require.resolve('stream-browserify'),
+          "zlib": require.resolve('zlib-browserify')
+        }
+      }
+    };
+  })
   .setPublicPath('public');
