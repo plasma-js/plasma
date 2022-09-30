@@ -1,5 +1,3 @@
-'use strict';
-
 require('dotenv').config();
 
 const Hapi = require('hapi');
@@ -8,10 +6,9 @@ const Core = require('./core/index');
 const Africa = require('africa.js');
 const { MySQL, MariaDB, PostgreSQL, SQLite, SQLServer } = require('africa.js');
 
-/**
- * Database config
- * @type {Object}
- */
+/* *******************************
+      Information Objects
+******************************** */
 let dbConfig = {
   host: env('DB_HOST'),
   user: env('DB_USER'),
@@ -19,10 +16,6 @@ let dbConfig = {
   database: env('DB_NAME')
 };
 
-/**
- * App globals
- * @type {Object}
- */
 let appGlobals = {
   server: {
     host: env('SERVER_HOST'),
@@ -40,10 +33,9 @@ let appGlobals = {
   db: dbConfig
 };
 
-/**
- * DB global
- * @type {Class Instance}
- */
+/* *******************************
+  Starts DB by the client on .env
+******************************** */
 let DB = undefined;
 
 switch(env('DB_CLIENT')) {
@@ -76,6 +68,10 @@ switch(env('DB_CLIENT')) {
     return new MySQL(dbConfig.host, dbConfig.user, dbConfig.password, dbConfig.database);
     break;
 };
+
+/* *******************************
+      Start plasma globals
+******************************** */
 
 global.env = env;
 global.App = appGlobals;
