@@ -89,11 +89,11 @@ const Server = new Hapi.server(App.server);
 Server.on('start', function(err) {
   Core.load(Server); // Load server resources
 
-  console.log('Server running at PORT', Server.info.port);
+  console.log(`Server running at PORT: ${Server.info.port}`);
 });
 
 Server.on('stop', function(err) {
-  console.warn('Server stoped. ', err);
+  console.warn(`Server stoped. Details: ${err}`);
 });
 
 /* *******************************
