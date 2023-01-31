@@ -8,6 +8,11 @@ For install the dependencies and run the project, open your bash/terminal in the
 ```bash
   npm install
 ```
+and then, run:
+
+```bash
+  yarn
+```
 
 ## Setup
 
